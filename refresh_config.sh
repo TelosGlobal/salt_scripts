@@ -94,17 +94,17 @@ then
    if [ $region = "us" ]
    then
        echo "Copying the config.ini for $target..." 
-       #salt '$target' cp.get_file salt://config/$region/$network/$area_$node_config.ini /ext/telos/config/config.ini
+       #salt '$target' cp.get_file salt://config/$region/$network/$area_$node_config.ini /ext/telos/config/config.ini makedirs=True
    else
        echo "Copying the config.ini for $target..." 
-       #salt $target cp.get_file salt://config/$region/$network/$node_config.ini /ext/telos/config/config.ini
+       #salt $target cp.get_file salt://config/$region/$network/$node_config.ini /ext/telos/config/config.ini makedirs=True
    fi
 fi
 read -p "Copy genesis.json? (y/n): " confirm2
 if [ $confirm2 == "Y" ] || [ $confirm2 == "y" ]
 then
     echo "Copying the genesis.json for $target..." 
-    #salt '$target' cp.get_file salt://config/$region/$network/genesis.json /ext/telos/config/genesis.json
+    #salt '$target' cp.get_file salt://config/$region/$network/genesis.json /ext/telos/config/genesis.json makedirs=True
 fi
 if [ $confirm1 == "Y" ] || [ $confirm1 == "y" ] || [ $confirm2 == "Y" ] || [ $confirm2 == "y" ]
 then
