@@ -40,7 +40,7 @@ then
         network="error"
     fi
     area=""
-    if [ $mainnet = "mainnet" ]
+    if [ $network = "mainnet" ]
     then
       echo ""
       echo "Which area config should we install:"
