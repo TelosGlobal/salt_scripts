@@ -18,7 +18,7 @@ else
     echo "error"
     region="error"
 fi
-echo $region 
+echo "Region: $region" 
 if [ $region = "us" ]
 then
     echo "Which network config should we install:"
@@ -65,6 +65,8 @@ then
 else
     network="mainnet"
 fi
+echo "Network: $network"
+echo "Area: $area"
 echo ""
 echo "Which server config should we install:"
 echo "1. node01"
@@ -89,7 +91,7 @@ else
     node="error"
 fi
 target=$region$network$area$node
-echo "Target node is $target"
+echo "Target node: $target"
 echo "Pinging salt minion..."
 salt $target test.ping
 read -p "Copy config.ini? (y/n): " confirm1
