@@ -39,24 +39,28 @@ then
         echo "error"
         network="error"
     fi
-    echo ""
-    echo "Which area config should we install:"
-    echo "1. ny"
-    echo "2. sj"
-    echo "3. va"
-    read -p "Choose (1,2,3) : " area
-    if [ $area = 1 ]
+    area=""
+    if [ $mainnet = "mainnet" ]
     then
+      echo ""
+      echo "Which area config should we install:"
+      echo "1. ny"
+      echo "2. sj"
+      echo "3. va"
+      read -p "Choose (1,2,3) : " area
+      if [ $area = 1 ]
+      then
 	area="ny"
-    elif [ $area = 2 ]
-    then
+      elif [ $area = 2 ]
+      then
 	area="sj"
-    elif [ $area = 3 ]
-    then
+      elif [ $area = 3 ]
+      then
 	area="va"
-    else
+      else
         echo "error"
         area="error"
+      fi
     fi
 else
     network="mainnet"
@@ -94,7 +98,7 @@ then
    if [ $region = "us" ]
    then
        echo "Copying the config.ini for $target..." 
-       #salt '$target' cp.get_file salt://config/$region/$network/$area_$node_config.ini /ext/telos/config/config.ini makedirs=True
+       #salt $target cp.get_file salt://config/$region/$network/$area_$node_config.ini /ext/telos/config/config.ini makedirs=True
    else
        echo "Copying the config.ini for $target..." 
        #salt $target cp.get_file salt://config/$region/$network/$node_config.ini /ext/telos/config/config.ini makedirs=True
@@ -104,12 +108,12 @@ read -p "Copy genesis.json? (y/n): " confirm2
 if [ $confirm2 == "Y" ] || [ $confirm2 == "y" ]
 then
     echo "Copying the genesis.json for $target..." 
-    #salt '$target' cp.get_file salt://config/$region/$network/genesis.json /ext/telos/config/genesis.json makedirs=True
+    #salt $target cp.get_file salt://config/$region/$network/genesis.json /ext/telos/config/genesis.json makedirs=True
 fi
 if [ $confirm1 == "Y" ] || [ $confirm1 == "y" ] || [ $confirm2 == "Y" ] || [ $confirm2 == "y" ]
 then
     echo "Updating file permissions for //ext..."
-    salt $target cmd.run 'chown -R telosuser /ext/*'
+    #salt $target cmd.run 'chown -R telosuser /ext/*'
     echo "Permissions updated."
 fi
 echo "Refresh complete."
