@@ -112,7 +112,7 @@ then
 fi
 if [ $confirm1 == "Y" ] || [ $confirm1 == "y" ] || [ $confirm2 == "Y" ] || [ $confirm2 == "y" ]
 then
-    echo "Updating file permissions for //ext..."
+    echo "Updating file permissions for /ext..."
     #salt $target cmd.run 'chown -R telosuser /ext/*'
     echo "Permissions updated."
 fi
