@@ -93,29 +93,29 @@ fi
 target=$region$network$area$node
 echo "Target node: $target"
 echo "Pinging salt minion..."
-salt $target test.ping
+sudo salt $target test.ping
 read -p "Copy config.ini? (y/n): " confirm1
 if [ $confirm1 == "Y" ] || [ $confirm1 == "y" ]
 then
    if [ $region = "us" ]
    then
        echo "Copying the config.ini for $target..." 
-       #salt $target cp.get_file salt://config/$region/$network/$area_$node_config.ini /ext/telos/config/config.ini makedirs=True
+       sudo salt $target cp.get_file salt://config/$region/$network/$area_$node_config.ini /ext/telos/config/config.ini makedirs=True
    else
        echo "Copying the config.ini for $target..." 
-       #salt $target cp.get_file salt://config/$region/$network/$node_config.ini /ext/telos/config/config.ini makedirs=True
+       sudo salt $target cp.get_file salt://config/$region/$network/$node_config.ini /ext/telos/config/config.ini makedirs=True
    fi
 fi
 read -p "Copy genesis.json? (y/n): " confirm2
 if [ $confirm2 == "Y" ] || [ $confirm2 == "y" ]
 then
     echo "Copying the genesis.json for $target..." 
-    #salt $target cp.get_file salt://config/$region/$network/genesis.json /ext/telos/config/genesis.json makedirs=True
+    sudo salt $target cp.get_file salt://config/$region/$network/genesis.json /ext/telos/config/genesis.json makedirs=True
 fi
 if [ $confirm1 == "Y" ] || [ $confirm1 == "y" ] || [ $confirm2 == "Y" ] || [ $confirm2 == "y" ]
 then
     echo "Updating file permissions for /ext..."
-    #salt $target cmd.run 'chown -R telosuser /ext/*'
+    sudo salt $target cmd.run 'chown -R telosuser /ext/*'
     echo "Permissions updated."
 fi
 echo "Refresh complete."
