@@ -100,10 +100,10 @@ then
    if [ $region = "us" ] && [ $network = "mainnet" ]
    then
        echo "Copying the config.ini for $target..." 
-       sudo salt $target cp.get_file salt://config/$region/$network/$area_$node_config.ini /ext/telos/config/config.ini makedirs=True
+       sudo salt $target cp.get_file salt://config/$region/$network/$area.$node.config.ini /ext/telos/config/config.ini makedirs=True
    else
        echo "Copying the config.ini for $target..." 
-       sudo salt $target cp.get_file salt://config/$region/$network/$node_config.ini /ext/telos/config/config.ini makedirs=True
+       sudo salt $target cp.get_file salt://config/$region/$network/$node.config.ini /ext/telos/config/config.ini makedirs=True
    fi
 fi
 read -p "Copy genesis.json? (y/n): " confirm2
