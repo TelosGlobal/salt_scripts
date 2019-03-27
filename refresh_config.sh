@@ -97,7 +97,7 @@ sudo salt $target test.ping
 read -p "Copy config.ini? (y/n): " confirm1
 if [ $confirm1 == "Y" ] || [ $confirm1 == "y" ]
 then
-   if [ $region = "us" ]
+   if [ $region = "us" ] && [ $network = "mainnet" ]
    then
        echo "Copying the config.ini for $target..." 
        sudo salt $target cp.get_file salt://config/$region/$network/$area_$node_config.ini /ext/telos/config/config.ini makedirs=True
