@@ -72,7 +72,7 @@ echo "Which server config should we install:"
 echo "1. node01"
 echo "2. node02"
 echo "3. prdr01"
-echo "4. prdr02"	
+echo "4. prdr02 (Only in MAINNET VA & NY)"	
 read -p "Choose (1,2,3,4) : " node
 if [ $node = 1 ]
 then 
