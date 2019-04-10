@@ -1,4 +1,4 @@
 #!/bin/bash
 
-salt '*' cmd.run 'certbot renew'
+salt '*' cmd.run 'certbot -n renew'
 
