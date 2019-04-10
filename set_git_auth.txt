@@ -1,5 +1,0 @@
-To setup auth for git push:
-
-git remote set-url origin https://kquainta:%24m1l3M0r3%21@github.com/TelosGlobal/salt_scripts.git
-
-git remote set-url origin https://kquainta:%24m1l3M0r3%21@github.com/TelosGlobal/bootstrap.git
