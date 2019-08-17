@@ -25,7 +25,8 @@ then
     echo "1. mainnet"
     echo "2. stagenet"
     echo "3. testnet"
-    read -p "Choose (1,2,3) : " network
+    echo "4. testnet2"
+    read -p "Choose (1,2,3,4) : " network
     if [ $network = 1 ]
     then 
 	network="mainnet"
@@ -35,6 +36,9 @@ then
     elif [ $network = 3 ]
     then
 	network="testnet"
+    elif [ $network = 4 ]
+    then
+	network="testnet2"
     else
         echo "error"
         network="error"
@@ -110,7 +114,7 @@ read -p "Copy genesis.json? (y/n): " confirm2
 if [ $confirm2 == "Y" ] || [ $confirm2 == "y" ]
 then
     echo "Copying the genesis.json for $target..." 
-    sudo salt $target cp.get_file salt://config/$region/$network/genesis.json /ext/telos/config/genesis.json makedirs=True
+    sudo salt $target cp.get_file salt://config/genesis/$network/genesis.json /ext/telos/config/genesis.json makedirs=True
 fi
 if [ $confirm1 == "Y" ] || [ $confirm1 == "y" ] || [ $confirm2 == "Y" ] || [ $confirm2 == "y" ]
 then
